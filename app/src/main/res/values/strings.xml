@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Stundenplan BbSOvG</string>
+    <string name="app_title">Stundenplan</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="drawer_open">Stundeplan auswählen</string>
+    <string name="LoadHeading">Ladevorgang</string>
+    <string name="LoadMessage">Der Stundenplan wird geladen...</string>
+    <string name="ParseHeading">Startvorgang</string>
+    <string name="ParseMessage">"Verbindung wird hergestellt..."</string>
+    <string name="Error01">"Fehler 01 - Die App wurde beendet!"</string>
+    <string name="Error02">"Fehler 02 - Die App wurde beendet!"</string>
+    <string name="Error03">"Fehler 03 - Offline-Seite kann nicht anzeigen werden!"</string>
+    <string name="ErrorNoConnection">Keine Internetverbindung!\nOSI Layer 8 Error ;-)</string>
+    <string name="settings_reset">Zurücksetzen</string>
+    <string name="settings_about">Info</string>
+    <string name="settings_return_session">Wochenauswahl merken</string>
+    <string name="settings_old_time_tables">Alte Stundenpläne wählbar</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_web_zoom">Zoom für Stundenplan</string>
+    <string name="settings_old_count_max">Maximale Anzahl</string>
+    <string name="settings_refresh_on_resume">Stundenplan immer aktuell</string>
+    <string name="settings_offline_mode">Offline Modus</string>
+    <string name="settings_old_all">Alle (laufendes Jahr)</string>
+    <string name="settings_old_1">1</string>
+    <string name="settings_old_2">2</string>
+    <string name="settings_old_3">3</string>
+    <string name="settings_old_4">4</string>
+    <string name="settings_old_8">8</string>
+    <string name="settings_old_16">16</string>
+    <string name="settings_class_selection">Klasse</string>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/paperclip</item>
+        <item>@drawable/paperclip_white</item>
+        <item>@drawable/calendar</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <array name="spinner_old_count">
+        <item>@string/settings_old_all</item>
+        <item>@string/settings_old_1</item>
+        <item>@string/settings_old_2</item>
+        <item>@string/settings_old_3</item>
+        <item>@string/settings_old_4</item>
+        <item>@string/settings_old_8</item>
+        <item>@string/settings_old_16</item>
+    </array>
+
+    <string name="title_activity_info">Info</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="linkFreePik"><a href="http://www.freepik.com">www.freepik.com</a></string>
+    <string name="linkFlatIcon"><a href="http://www.flaticon.com">www.flaticon.com</a></string>
+
+</resources>

@@ -1,0 +1,220 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.madapps.bbsovgtimetable.Settings">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:id="@+id/linearLayout">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/linearLayoutClassSelection">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/settings_class_selection"
+                            android:id="@+id/textViewClassSelection"
+                            android:gravity="center_vertical" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerClassSelection"
+                        android:textAlignment="center"
+                        android:clickable="true"
+                        android:spinnerMode="dialog"
+                        android:layout_marginLeft="10dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_return_session"
+                android:id="@+id/switchRestoreWeek"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Wird diese Option aktiviert, merkt sich die App die gewählte Woche und stellt diese beim nächsten Start der App wieder her."
+                android:id="@+id/textViewReturnSession"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_old_time_tables"
+                android:id="@+id/switchShowOld"
+                android:singleLine="false"
+                android:layout_marginTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Durch das Aktivieren dieser Option werden auch die vergangenen Wochen zur Auswahl verfügbar sein, die sonst über die Website nicht mehr erreichbar wären."
+                android:id="@+id/textViewShowOld"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayoutShowOldCount">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/settings_old_count_max"
+                        android:id="@+id/textViewShowOldCount"
+                        android:gravity="center_vertical" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerShowOldCount"
+                        android:textAlignment="center"
+                        android:clickable="true"
+                        android:entries="@array/spinner_old_count"
+                        android:spinnerMode="dialog"
+                        android:layout_marginLeft="10dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Dieser Wert gibt an, wie viele Stundenpläne der vergangenen Wochen angezeigt werden sollen. Die Einstellung 'Alle' zeigt alle Pläne des laufenden Jahres an."
+                    android:id="@+id/textView"
+                    android:layout_marginBottom="5dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dp" />
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_web_zoom"
+                android:id="@+id/switchWebZoom"
+                android:singleLine="false"
+                android:layout_marginTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Ist diese Option aktiviert, ist es möglich per 2-Finger-Geste den Stundenplan zu vergrößern oder zu verkleinern."
+                android:id="@+id/textViewWebZoom"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dp" />
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_refresh_on_resume"
+                android:id="@+id/switchRefreshOnResume"
+                android:singleLine="false"
+                android:layout_marginTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Der Stundenplan wird automatisch aktualisert, wenn die App nach dem Ausblenden noch nicht beendet wurde und wieder fortgesetzt wird."
+                android:id="@+id/textViewRefreshOnResume"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp" />
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginTop="5dp" />
+
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_offline_mode"
+                android:id="@+id/switchOfflineMode"
+                android:singleLine="false"
+                android:layout_marginTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Geöffnete Stundenpläne werden gespeichert und stehen dann auch offline zur Verfügung."
+                android:id="@+id/textViewOfflineMode"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
