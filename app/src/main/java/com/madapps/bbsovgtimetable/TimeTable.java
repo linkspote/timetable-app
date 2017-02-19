@@ -54,7 +54,7 @@ public class TimeTable extends Activity implements OnRefreshListener {
 
     public boolean bTrial = false;
     public static boolean bClassSelection = true;
-    public static String sDefaultClass = "EFI12a";
+    public static String sDefaultClass = "";
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -75,8 +75,8 @@ public class TimeTable extends Activity implements OnRefreshListener {
     private static boolean bGetWebsiteContent = false;
     private static boolean bIsOnline = false;
     private static boolean bRefreshOnResume = false;
-    private static String sParseURL = "http://klassen.bbsovg-magdeburg.de/frames/navbar.htm";
-    private static String sTimeTableBaseURL = "http://klassen.bbsovg-magdeburg.de/";
+    private static String sParseURL = "";
+    private static String sTimeTableBaseURL = "";
     private Handler mHandler = new Handler();
     private ActionBar mActionBar;
     /*
