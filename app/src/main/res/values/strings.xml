@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Timetable App</string>
+    <string name="settingsActivity">Settings</string>
 </resources>

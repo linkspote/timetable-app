@@ -40,6 +40,7 @@ public class MainActivityFragment extends Fragment {
 
         View vwRoot = inflater.inflate(R.layout.fragment_main, container, false);
 
+
         ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours); // find ListView in Fragment to fill it with data
         lvHours.setAdapter(arradHours); // set data of ListView respectively of the ListItems
 
