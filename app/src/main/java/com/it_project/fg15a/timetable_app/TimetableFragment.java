@@ -1,7 +1,7 @@
 package com.it_project.fg15a.timetable_app;
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivityFragment extends Fragment {
+public class TimetableFragment extends Fragment {
 
-    public MainActivityFragment() {
+    public TimetableFragment() {
     }
 
     @Override
@@ -38,7 +38,7 @@ public class MainActivityFragment extends Fragment {
         ArrayAdapter<String> arradHours = new ArrayAdapter<>(
                 getActivity(), R.layout.list_item_hours, R.id.tv_Hours, lsHours);
 
-        View vwRoot = inflater.inflate(R.layout.fragment_main, container, false);
+        View vwRoot = inflater.inflate(R.layout.fragment_timetable, container, false);
 
 
         ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours); // find ListView in Fragment to fill it with data

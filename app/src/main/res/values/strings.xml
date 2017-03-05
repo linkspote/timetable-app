@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Timetable App</string>
-    <string name="settingsActivity">Settings</string>
+    <string name="app_name">BbS OvG Timetable</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
