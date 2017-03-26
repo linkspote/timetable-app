@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.it_project.fg15a.timetable_app.helpers.dataReceiver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +40,8 @@ public class TimetableFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+
                         Snackbar.make(vwRoot, "Erfolg!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                         Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
