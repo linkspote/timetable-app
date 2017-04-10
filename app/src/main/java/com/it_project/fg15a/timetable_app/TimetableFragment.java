@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.it_project.fg15a.timetable_app.helpers.dataModifier;
 import com.it_project.fg15a.timetable_app.helpers.dataReceiver;
 
 import java.util.ArrayList;
@@ -33,15 +34,18 @@ public class TimetableFragment extends Fragment {
 
         final View vwRoot = inflater.inflate(R.layout.fragment_timetable, container, false);
 
-        String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/09/c/c00042.htm";
+        final String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/09/c/c00042.htm";
+
+        final dataModifier dmTimetable = new dataModifier();
+        final String [] arrHours = {}; // array with example data for ListView fragment
 
         final RequestQueue rqTimetable = Volley.newRequestQueue(this.getContext());
-        StringRequest srTimetablePage = new StringRequest(Request.Method.GET, sUri,
+        final StringRequest srTimetablePage = new StringRequest(Request.Method.GET, sUri,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-
+                        dmTimetable.modifyData(sUri, arrHours);
                         Snackbar.make(vwRoot, "Erfolg!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                         Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
@@ -61,18 +65,6 @@ public class TimetableFragment extends Fragment {
 
         rqTimetable.add(srTimetablePage);
 
-        String [] arrHours = {
-                "Deutsch",
-                "Mathe",
-                "Englisch",
-                "Spanisch",
-                "Sport",
-                "Deutsch",
-                "Mathe",
-                "Englisch",
-                "Spanisch",
-                "Sport"
-        }; // array with example data for ListView fragment
 
         List<String> lsHours = new ArrayList<>(Arrays.asList(arrHours)); // turn Array into List
 
