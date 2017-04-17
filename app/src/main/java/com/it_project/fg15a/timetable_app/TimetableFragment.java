@@ -1,6 +1,7 @@
 package com.it_project.fg15a.timetable_app;
 
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -37,18 +38,23 @@ public class TimetableFragment extends Fragment {
         final String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/09/c/c00042.htm";
 
         final dataModifier dmTimetable = new dataModifier();
-        final String [] arrHours = {}; // array with example data for ListView fragment
 
         final RequestQueue rqTimetable = Volley.newRequestQueue(this.getContext());
         final StringRequest srTimetablePage = new StringRequest(Request.Method.GET, sUri,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        List<String> lsHours = new ArrayList<>(Arrays.asList(dmTimetable.modifyData(response))); // turn Array into List
 
-                        dmTimetable.modifyData(sUri, arrHours);
+                        ArrayAdapter<String> arradHours = new ArrayAdapter<>(
+                                getActivity(), R.layout.list_item_hours, R.id.tv_Hours, lsHours);
+
+                        ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours); // find ListView in Fragment to fill it with data
+                        lvHours.setAdapter(arradHours); // set data of ListView respectively of the ListItems
+
                         Snackbar.make(vwRoot, "Erfolg!", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
-                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+
                         rqTimetable.stop();
                     }
                 },
@@ -64,15 +70,6 @@ public class TimetableFragment extends Fragment {
         );
 
         rqTimetable.add(srTimetablePage);
-
-
-        List<String> lsHours = new ArrayList<>(Arrays.asList(arrHours)); // turn Array into List
-
-        ArrayAdapter<String> arradHours = new ArrayAdapter<>(
-                getActivity(), R.layout.list_item_hours, R.id.tv_Hours, lsHours);
-
-        ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours); // find ListView in Fragment to fill it with data
-        lvHours.setAdapter(arradHours); // set data of ListView respectively of the ListItems
 
         return vwRoot;
     }
