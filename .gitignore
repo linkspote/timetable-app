@@ -39,6 +39,7 @@ captures/
 
 # User specific stuff
 .idea/modules.xml
+.idea/misc.xml
 .idea/workspace.xml
 .idea/vcs.xml
 
