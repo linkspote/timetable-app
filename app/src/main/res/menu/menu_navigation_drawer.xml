@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_group_demo" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_demo_day"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Day view data processing" />
+        <item
+            android:id="@+id/nav_item_demo_week"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Week view example" />
+
+    </group>
+
+    <group android:id="@+id/nav_group_timetables_old" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_week_x"
+            android:title="Week X"/>
+        <item
+            android:id="@+id/nav_item_week_y"
+            android:title="Week Y" />
+        <item
+            android:id="@+id/nav_item_week_z"
+            android:title="Week Z" />
+    </group>
+
+    <group android:id="@+id/nav_group_timetables_new" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_actual_week"
+            android:title="Actual week" />
+        <item
+            android:id="@+id/nav_item_next_week"
+            android:title="Next week" />
+    </group>
+
+    <group android:id="@+id/nav_group_misc" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_item_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/navigation_drawer_settings" />
+        <item
+            android:id="@+id/nav_bugreport"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/navigation_drawer_bugreport" />
+    </group>
+
+</menu>

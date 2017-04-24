@@ -1,8 +1,46 @@
 <resources>
     <string name="app_name">BbS OvG Timetable</string>
 
+    <!-- Strings of menu_navigation_drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_settings">Settings</string>
+    <string name="navigation_drawer_bugreport">Report a bug</string>
 
-    <string name="action_settings">Settings</string>
+
+    <!-- Strings of menu_options -->
+    <string name="action_refresh">Refresh</string>
+    <string name="action_switchView">Switch</string>
+
+
+    <!-- Strings of TabHostFragment -->
+    <string name="section_monday">Mo</string>
+    <string name="section_tuesday">Tu</string>
+    <string name="section_wednesday">We</string>
+    <string name="section_thursday">Th</string>
+    <string name="section_friday">Fr</string>
+    <string name="section_saturday">Sa</string>
+
+
+    <!-- Strings of activity_settings -->
+    <string name="category_timetable">Timetable</string>
+    <string name="title_showOldPlans">Show old plans</string>
+    <string name="summary_showOldPlans">If enabled, the app will display as many plans as selected below.</string>
+    <string name="key_showOldPlans">pkShowOldPlans</string>
+    <string name="title_showXPlans">Amount of plans to show</string>
+    <string name="dialogTitle_showXPlans">Please choose</string>
+    <string name="summary_showXPlans">The app will display as many plans as chosen.</string>
+    <string name="key_showXPlans">pkShowXPlans</string>
+    <string name="title_rememberPlan">Remember selected plan</string>
+    <string name="summary_rememberPlan">If checked, the app will show you the last viewed plan on start and resume. If not checked, the app will always show current weeks plan.</string>
+    <string name="key_rememberPlan">pkRememberPlan</string>
+
+    <string name="category_about">About</string>
+    <string name="title_developers">Developers</string>
+    <string name="summary_developers">Jonas Budde, Kevin Kleiber &amp; Niclas Ressel</string>
+    <string name="title_version">Version</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

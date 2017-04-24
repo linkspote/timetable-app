@@ -1,0 +1,43 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <PreferenceCategory android:title="@string/category_timetable" >
+
+        <SwitchPreference
+            android:title="@string/title_showOldPlans"
+            android:summary="@string/summary_showOldPlans"
+            android:key="@string/key_showOldPlans"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:dependency="@string/key_showOldPlans"
+            android:title="@string/title_showXPlans"
+            android:summary="@string/summary_showXPlans"
+            android:dialogTitle="@string/dialogTitle_showXPlans"
+            android:key="@string/key_showXPlans"
+            android:entries="@array/peShowXPlans"
+            android:entryValues="@array/pvShowXPlans" />
+
+        <CheckBoxPreference
+            android:dependency="@string/key_showOldPlans"
+            android:title="@string/title_rememberPlan"
+            android:summary="@string/summary_rememberPlan"
+            android:key="@string/key_rememberPlan"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/category_about">
+
+        <Preference
+            android:title="@string/title_developers"
+            android:summary="@string/summary_developers" />
+
+        <Preference
+            android:title="@string/title_version"
+            android:summary="@string/versionName" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

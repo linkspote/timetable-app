@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.it_project.fg15a.timetable_app.WeekFragment">
+
+    <!-- TODO: get SwipeRefreshLayout to work as expected -->
+    <!--<android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/srlFragmentWeek"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >-->
+
+        <WebView
+            android:id="@+id/wvFragmentWeek"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+</FrameLayout>

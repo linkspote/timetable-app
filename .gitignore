@@ -38,6 +38,7 @@ captures/
 *.iml
 
 # User specific stuff
+.idea/modules.xml
 .idea/workspace.xml
 .idea/vcs.xml
 
