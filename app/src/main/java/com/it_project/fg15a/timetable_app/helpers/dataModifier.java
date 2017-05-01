@@ -11,8 +11,6 @@ import java.util.Map;
 
 public class dataModifier {
 
-    // TODO: Completely rework this method, it has to use a sorted array and should seperate:
-    // TODO: times, subjects, teachers and rooms
     @Deprecated
     public String[] modifyData(String p_sWebsite) {
         Map<String, String> mHours = new LinkedHashMap<>();
@@ -51,16 +49,13 @@ public class dataModifier {
         return mHours.values().toArray(new String[0]);
     }
 
-    // This method shall return the processed data of a timetable html file
-    // TODO: Include check for color and empty values
-    public String[] modifyContent (String p_sWebsiteContent) {
+    // This method returns the processed data of a timetable html file
+    public Map<String, String[]> modifyContent (String p_sWebsiteContent) {
         // map to store all processed data
-        // final structure should be
-        // 0, Times
-        // 1, Data of monday
-        // ..., Data of day x
-        // 6, Data of saturday
-        Map<String, String> mData = new LinkedHashMap<>();
+        // Structure: {Column Index_Row Index, [(0), (1), (2), (3), (4)]}
+        // Example -> Time: {0_1, [(0)Time from, (1)Time to]}
+        // Example -> Hour: {1_1, [(2)Subject, (3)Teacher, (4)Room]}
+        Map<String, String[]> mData = new LinkedHashMap<>();
 
         // turn p_sWebsiteContent into a HTML document
         Document docPage = Jsoup.parse(p_sWebsiteContent);
@@ -68,35 +63,39 @@ public class dataModifier {
         // select all rows which are direct children of tbody of the table, max count: 21
         Elements eRows = docPage.select("table[border='3'] > tbody > tr");
 
+        // iterate through each row (= HTML tr tag) of the table
         for (Element eRow : eRows) {
             // index of tr tag in tbody
             int iRowIndex = eRow.elementSiblingIndex();
 
             // select all td tags of tr tag, max count: 7
-            Elements eDefinitions = eRow.children();
+            Elements eColumns = eRow.children();
 
-            for (Element eDefinition : eDefinitions) {
+            // iterate through each definition (= HTML td tag) of the actual row
+            for (Element eColumn : eColumns) {
                 // index of td tag in tr tag
-                int iDefinitionIndex = eDefinition.elementSiblingIndex();
+                int iColumnIndex = eColumn.elementSiblingIndex();
 
-                // if column index is zero then it's a time value
-                if (iDefinitionIndex == 0) {
-                    String sFrom = "sFrom: " + eDefinition.select("> table > tbody > tr > td + td")
-                            .text();
-                    mData.put(iRowIndex + "_" + iDefinitionIndex, sFrom);
-                    String sTo = "sTo: " + eDefinition.select("> table > tbody > tr + tr > td")
-                            .text();
-                    mData.put(iRowIndex + "_" + iDefinitionIndex, sTo);
+                // initialize string array for data
+                String[] sData = new String[5];
+
+                // if column index is zero then there are time values
+                if (iColumnIndex == 0 && iRowIndex != 0) {
+                    sData[0] = "sFrom: " + eColumn.select("> table > tbody > tr > td + td").text();
+                    sData[1] = "sTo: " + eColumn.select("> table > tbody > tr + tr > td").text();
+
+                    // add data with unique index to map
+                    mData.put(String.valueOf(iColumnIndex) + "_" + String.valueOf(iRowIndex) , sData);
                 }
-                // if row index is zero then it's the name of a day
-                else if (iRowIndex == 0) {
-                    String sDay = "sDay: " + eDefinition.text();
-                    mData.put(iRowIndex + "_" + iDefinitionIndex, sDay);
-                }
-                // if it's not a time or a day then it contains subject, teacher and room
-                else {
+                // if no time or day values then subject, teacher and room values
+                // TODO: Add check for hex code of color red
+                // TODO: Add check for half blocks
+                // TODO: Add check for redundant values
+                // TODO: Add check for empty values
+                // TODO: Add check for course blocks (= tds with 20% width)
+                else if (iColumnIndex != 0 && iRowIndex != 0) {
                     // select all tr tags of the table of the td tag
-                    Elements eRemainingStrings = eDefinition.select("> table > tbody > tr");
+                    Elements eRemainingStrings = eColumn.select("> table > tbody > tr");
 
                     for (Element eRemainingString : eRemainingStrings) {
                         // index of tr tag of table in td tag
@@ -104,33 +103,29 @@ public class dataModifier {
 
                         switch (iRemainingStringIndex) {
                             case 0:
-                                // get subject and put it in map
-                                String sSubject = "sSubject: " + eRemainingString.text();
-                                mData.put(iRowIndex + "_" + iDefinitionIndex + "_" +
-                                        iRemainingStringIndex, sSubject);
+                                // set subject
+                                sData[2] = "sSubject: " + eRemainingString.text();
                                 break;
                             case 1:
-                                // get teacher and put it in map
-                                String sTeacher = "sTeacher: " + eRemainingString.text();
-                                mData.put(iRowIndex + "_" + iDefinitionIndex + "_" +
-                                        iRemainingStringIndex, sTeacher);
+                                // set teacher
+                                sData[3] = "sTeacher: " + eRemainingString.text();
                                 break;
                             case 2:
-                                // get room and put it in map
-                                String sRoom = "sRoom: " + eRemainingString.text();
-                                mData.put(iRowIndex + "_" + iDefinitionIndex + "_" +
-                                        iRemainingStringIndex, sRoom);
+                                // set room
+                                sData[4] = "sRoom: " + eRemainingString.text();
                                 break;
                             default:
                                 break;
-
                         }
                     }
+
+                    // add data with unique index to map
+                    mData.put(String.valueOf(iColumnIndex) + "_" + String.valueOf(iRowIndex) , sData);
                 }
             }
         }
 
-        // return map as array to be able to be put in ListView
-        return mData.values().toArray(new String[0]);
+        // return map with processed data
+        return mData;
     }
 }

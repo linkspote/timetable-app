@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BbS OvG Stundenplan</string>
+    <string name="action_refresh">Aktualisieren</string>
+    <string name="action_switchView">Wechseln</string>
+    <string name="category_about">Über</string>
+    <string name="category_timetable">Stundenplan</string>
+    <string name="dialogTitle_showXPlans">Bitte wählen</string>
+    <string name="navigation_drawer_bugreport">Fehler melden</string>
+    <string name="navigation_drawer_settings">Einstellungen</string>
+    <string name="section_friday">Fr</string>
+    <string name="section_monday">Mo</string>
+    <string name="section_saturday">Sa</string>
+    <string name="section_thursday">Do</string>
+    <string name="section_tuesday">Di</string>
+    <string name="section_wednesday">Mi</string>
+    <string name="summary_rememberPlan">Ist das Häkchen gesetzt, so zeigt die App immer den zuletzt angesehenen Plan. Ist das Häkchen nicht gesetzt, so zeigt die App immer den aktuellen Wochenplan.</string>
+    <string name="summary_showOldPlans">Wenn die Option aktiviert ist, zeigt die App so viele Pläne wie unten ausgewählt an.</string>
+    <string name="summary_showXPlans">Die App zeigt genauso viele Pläne wie ausgewählt an.</string>
+    <string name="title_developers">Entwickler</string>
+    <string name="title_rememberPlan">Ausgewählten Plan merken</string>
+    <string name="title_showOldPlans">Alte Pläne anzeigen</string>
+    <string name="title_showXPlans">Anzahl anzuzeigender Pläne</string>
+    <string name="navigation_drawer_close">Seitenleiste schließen</string>
+    <string name="navigation_drawer_open">Seitenleiste öffnen</string>
+</resources>

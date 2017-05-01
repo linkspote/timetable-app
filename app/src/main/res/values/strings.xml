@@ -26,21 +26,21 @@
     <string name="category_timetable">Timetable</string>
     <string name="title_showOldPlans">Show old plans</string>
     <string name="summary_showOldPlans">If enabled, the app will display as many plans as selected below.</string>
-    <string name="key_showOldPlans">pkShowOldPlans</string>
+    <string name="key_showOldPlans" translatable="false">pkShowOldPlans</string>
     <string name="title_showXPlans">Amount of plans to show</string>
     <string name="dialogTitle_showXPlans">Please choose</string>
     <string name="summary_showXPlans">The app will display as many plans as chosen.</string>
-    <string name="key_showXPlans">pkShowXPlans</string>
+    <string name="key_showXPlans" translatable="false">pkShowXPlans</string>
     <string name="title_rememberPlan">Remember selected plan</string>
     <string name="summary_rememberPlan">If checked, the app will show you the last viewed plan on start and resume. If not checked, the app will always show current weeks plan.</string>
-    <string name="key_rememberPlan">pkRememberPlan</string>
+    <string name="key_rememberPlan" translatable="false">pkRememberPlan</string>
 
     <string name="category_about">About</string>
     <string name="title_developers">Developers</string>
-    <string name="summary_developers">Jonas Budde, Kevin Kleiber &amp; Niclas Ressel</string>
-    <string name="title_version">Version</string>
+    <string name="summary_developers" translatable="false">Jonas Budde, Kevin Kleiber &amp; Niclas Ressel</string>
+    <string name="title_version" translatable="false">Version</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 </resources>
