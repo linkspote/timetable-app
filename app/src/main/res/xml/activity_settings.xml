@@ -2,7 +2,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <PreferenceCategory android:title="@string/category_timetable" >
+    <PreferenceCategory android:title="@string/category_weekView">
+
+        <ListPreference
+            android:title="@string/title_improvePerformance"
+            android:summary="@string/summary_improvePerformance"
+            android:dialogTitle="@string/dialogTitle_improvePerformance"
+            android:key="@string/pkImprovePerformance"
+            android:entries="@array/peImprovePerformance"
+            android:entryValues="@array/pvImprovePerformance" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/category_oldPlans">
 
         <SwitchPreference
             android:title="@string/title_showOldPlans"

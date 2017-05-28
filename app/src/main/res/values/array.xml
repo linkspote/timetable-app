@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+    <string-array name="peImprovePerformance">
+        <item>Disabled</item>
+        <item>Hardware acceleration</item>
+        <item>Software acceleration</item>
+    </string-array>
+
+    <string-array name="pvImprovePerformance">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <string-array name="peShowXPlans">
         <item>1 Plan</item>
         <item>2 Plans</item>

@@ -9,8 +9,7 @@ import android.support.v7.app.AppCompatDelegate;
 
 // PreferenceActivity just temporary because there were some issues with the PreferenceFragment
 // TODO: get ActionBar somehow to work
-public class SettingsActivity extends PreferenceActivity
-        implements Preference.OnPreferenceChangeListener {
+public class SettingsActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;
 
@@ -25,11 +24,6 @@ public class SettingsActivity extends PreferenceActivity
 
         // deprecated but only function to get layout of activity at this time
         addPreferencesFromResource(R.xml.activity_settings);
-    }
-
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
-        return false;
     }
 
     private AppCompatDelegate getDelegate() {

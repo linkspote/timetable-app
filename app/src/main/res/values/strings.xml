@@ -23,7 +23,13 @@
 
 
     <!-- Strings of activity_settings -->
-    <string name="category_timetable">Timetable</string>
+    <string name="category_weekView">Week view</string>
+    <string name="title_improvePerformance">Improve performance</string>
+    <string name="summary_improvePerformance">The app will use the chosen method to improve the performance of the week view. There is also the option to not improve the performance.</string>
+    <string name="dialogTitle_improvePerformance">Please choose a method</string>
+    <string name="pkImprovePerformance" translatable="false">pkImprovePerformance</string>
+
+    <string name="category_oldPlans">Old plans</string>
     <string name="title_showOldPlans">Show old plans</string>
     <string name="summary_showOldPlans">If enabled, the app will display as many plans as selected below.</string>
     <string name="key_showOldPlans" translatable="false">pkShowOldPlans</string>

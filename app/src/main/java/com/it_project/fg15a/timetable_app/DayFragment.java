@@ -20,6 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.it_project.fg15a.timetable_app.helpers.dataModifier;
+import com.it_project.fg15a.timetable_app.helpers.hourAdapter;
+import com.it_project.fg15a.timetable_app.helpers.hourItem;
 import com.it_project.fg15a.timetable_app.helpers.utilities;
 
 import org.w3c.dom.Text;
@@ -54,88 +56,38 @@ public class DayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment and get the inflated view
+        View vwRoot = inflater.inflate(R.layout.fragment_day, container, false);
 
-        // Get week of year
-        int iThisWeek = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+        // find ListView in Fragment to fill it with data
+        ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours);
 
-        // Get actual week of year
-        String sWeek = (iThisWeek < 10 ? "0" : "") + String.valueOf(iThisWeek);
 
-        final View vwRoot = inflater.inflate(R.layout.fragment_day, container, false);
-
-        final String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/" + sWeek
-                + "/c/c00042.htm";
-
-        final dataModifier dmTimetable = new dataModifier();
-
-        final RequestQueue rqTimetable = Volley.newRequestQueue(this.getContext());
-        final StringRequest srTimetablePage = new StringRequest(Request.Method.GET, sUri,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // turn Array into List
-                        List<String> lsHours =
-                                new ArrayList<>(Arrays.asList(dmTimetable.modifyData(response)));
-
-                        ArrayAdapter<String> arradHours = new ArrayAdapter<>(
-                                getActivity(), R.layout.list_item_hour, R.id.tvNote, lsHours);
-
-                        // find ListView in Fragment to fill it with data
-                        ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours);
-                        // set data of ListView respectively of the ListItems
-                        lvHours.setAdapter(arradHours);
-
-                        // stop all network activities
-                        rqTimetable.stop();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // initialize a new object of utilities
-                        utilities util = new utilities();
-
-                        // if user is connected to the internet
-                        if(util.isOnline(getContext())) {
-                            // Throw a short information about what happened
-                            Snackbar.make(vwRoot, "Something went really wrong!",
-                                    Snackbar.LENGTH_LONG).setAction("Action", null).show();
-
-                            // Show the error message for support issues
-                            Toast.makeText(getContext(), error.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                        } else {
-                            // show message to inform user why timetable doesn't load
-                            Snackbar.make(vwRoot, "Please establish an internet connection!",
-                                    Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                        }
-
-                        // stop all network activities
-                        rqTimetable.stop();
-                    }
-                }
-        );
-
-        rqTimetable.add(srTimetablePage);
-
-        // TODO: Finish part for single day output
-        /*int iDayColumn = getArguments().getInt("p_iDay");
+        String sTimeFrom = "", sTimeTo = "", sSubject = "", sTeacher = "", sRoom = "";
+        int iDayColumn = getArguments().getInt("p_iDay");
         int iTimeColumn = 0;
-        Map<String, String[]> mData = (Map<String, String[]>) getArguments().getSerializable("p_mData");
-
+        ArrayList<hourItem> alsHours = new ArrayList<hourItem>();
+        Map<String, String[]> mData = (Map<String, String[]>)
+                getArguments().getSerializable("p_mData");
 
         if (mData != null) {
-            for (Map.Entry<String, String[]> meHour : mData.entrySet()){
+            for (Map.Entry<String, String[]> meHour : mData.entrySet()) {
+                if (meHour.getKey().startsWith(String.valueOf(iTimeColumn))) {
+                    sTimeFrom = meHour.getValue()[0];
+                    sTimeTo = meHour.getValue()[1];
+                }
+                else if (meHour.getKey().endsWith(String.valueOf(iDayColumn))) {
+                    sSubject = meHour.getValue()[2];
+                    sTeacher = meHour.getValue()[3];
+                    sRoom = meHour.getValue()[4];
+                }
 
+                alsHours.add(new hourItem(sTimeFrom, sTimeTo, sSubject, sTeacher, sRoom));
             }
         }
 
-        RelativeLayout rlListItemHour = (RelativeLayout) inflater.inflate(R.layout.list_item_hour, null, false);
-        TextView tvTimeFrom = (TextView) vwRoot.findViewById(R.id.tvTimeFrom);
-        TextView tvTimeTo = (TextView) vwRoot.findViewById(R.id.tvTimeTo);
-        TextView tvSubject = (TextView) vwRoot.findViewById(R.id.tvSubject);
-        TextView tvRoom = (TextView) vwRoot.findViewById(R.id.tvRoom);
-        TextView tvTeacher = (TextView) vwRoot.findViewById(R.id.tvTeacher);*/
+        hourAdapter haHours = new hourAdapter(getContext(), alsHours);
+        lvHours.setAdapter(haHours);
 
         return vwRoot;
     }
