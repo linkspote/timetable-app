@@ -2,15 +2,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <PreferenceCategory android:title="@string/category_dayView">
+
+        <SwitchPreference
+            android:title="@string/title_showActualDay"
+            android:summary="@string/summary_showActualDay"
+            android:key="@string/key_showActualDay"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/category_weekView">
 
         <ListPreference
             android:title="@string/title_improvePerformance"
             android:summary="@string/summary_improvePerformance"
             android:dialogTitle="@string/dialogTitle_improvePerformance"
-            android:key="@string/pkImprovePerformance"
-            android:entries="@array/peImprovePerformance"
-            android:entryValues="@array/pvImprovePerformance" />
+            android:key="@string/key_ImprovePerformance"
+            android:entries="@array/entries_ImprovePerformance"
+            android:entryValues="@array/values_ImprovePerformance" />
 
     </PreferenceCategory>
 
@@ -28,8 +38,8 @@
             android:summary="@string/summary_showXPlans"
             android:dialogTitle="@string/dialogTitle_showXPlans"
             android:key="@string/key_showXPlans"
-            android:entries="@array/peShowXPlans"
-            android:entryValues="@array/pvShowXPlans" />
+            android:entries="@array/entries_ShowXPlans"
+            android:entryValues="@array/values_ShowXPlans" />
 
         <CheckBoxPreference
             android:dependency="@string/key_showOldPlans"

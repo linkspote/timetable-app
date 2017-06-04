@@ -147,8 +147,6 @@ public class NavigationActivity extends AppCompatActivity
         // Get actual week of year
         String sWeek = (iThisWeek < 10 ? "0" : "") + String.valueOf(iThisWeek);
 
-        sWeek = "20";
-
         String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/" + sWeek
                 + "/c/c00042.htm";
 

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string-array name="peShowXPlans">
+    <string-array name="entries_ShowXPlans">
         <item>1 Plan</item>
         <item>2 Pläne</item>
         <item>3 Pläne</item>
         <item>4 Pläne</item>
     </string-array>
 
-    <string-array name="pvShowXPlans">
+    <string-array name="values_ShowXPlans">
         <item>1</item>
         <item>2</item>
         <item>3</item>
