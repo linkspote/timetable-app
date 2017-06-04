@@ -7,10 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import com.it_project.fg15a.timetable_app.helpers.utilities;
 
@@ -27,12 +24,11 @@ public class WeekFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // This method creates a new instance of WeekFragment and passes the given parameters to
-    // it.
+    // This method creates a new instance of WeekFragment and passes the given parameter to it.
     public static WeekFragment newInstance(String p_sWeek) {
         WeekFragment wfThis = new WeekFragment();
 
-        // Pass parameters to Fragment
+        // Pass parameter to Fragment
         Bundle bunArguments = new Bundle();
         bunArguments.putString("p_sWeek", p_sWeek);
         wfThis.setArguments(bunArguments);

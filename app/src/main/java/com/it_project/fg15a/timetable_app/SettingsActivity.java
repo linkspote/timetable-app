@@ -3,7 +3,6 @@ package com.it_project.fg15a.timetable_app;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 

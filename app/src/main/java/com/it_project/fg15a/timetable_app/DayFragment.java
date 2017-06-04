@@ -1,37 +1,17 @@
 package com.it_project.fg15a.timetable_app;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.it_project.fg15a.timetable_app.helpers.dataModifier;
 import com.it_project.fg15a.timetable_app.helpers.hourAdapter;
 import com.it_project.fg15a.timetable_app.helpers.hourItem;
-import com.it_project.fg15a.timetable_app.helpers.utilities;
-
-import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DayFragment extends Fragment {
@@ -63,7 +43,7 @@ public class DayFragment extends Fragment {
         ListView lvHours = (ListView) vwRoot.findViewById(R.id.lv_Hours);
 
 
-        String sTimeFrom = "", sTimeTo = "", sSubject = "", sTeacher = "", sRoom = "";
+        String sRowIndex, sTimeFrom, sTimeTo, sSubject, sTeacher, sRoom;
         int iDayColumn = getArguments().getInt("p_iDay");
         int iTimeColumn = 0;
         ArrayList<hourItem> alsHours = new ArrayList<hourItem>();
@@ -72,17 +52,16 @@ public class DayFragment extends Fragment {
 
         if (mData != null) {
             for (Map.Entry<String, String[]> meHour : mData.entrySet()) {
-                if (meHour.getKey().startsWith(String.valueOf(iTimeColumn))) {
-                    sTimeFrom = meHour.getValue()[0];
-                    sTimeTo = meHour.getValue()[1];
-                }
-                else if (meHour.getKey().endsWith(String.valueOf(iDayColumn))) {
+                if (meHour.getKey().startsWith(String.valueOf(iDayColumn))) {
+                    sRowIndex = meHour.getKey().substring(2);
+                    sTimeFrom = mData.get(iTimeColumn + "_" + sRowIndex)[0];
+                    sTimeTo = mData.get(iTimeColumn + "_" + sRowIndex)[1];
                     sSubject = meHour.getValue()[2];
                     sTeacher = meHour.getValue()[3];
                     sRoom = meHour.getValue()[4];
-                }
 
-                alsHours.add(new hourItem(sTimeFrom, sTimeTo, sSubject, sTeacher, sRoom));
+                    alsHours.add(new hourItem(sTimeFrom, sTimeTo, sSubject, sTeacher, sRoom));
+                }
             }
         }
 

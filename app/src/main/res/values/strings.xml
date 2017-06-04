@@ -13,6 +13,11 @@
     <string name="action_switchView">Switch</string>
 
 
+    <!-- Strings of NavigationActivity -->
+    <string name="dialogTitle_webContentTask">Please wait…</string>
+    <string name="dialogMessage_webContentTask">Checking for plan updates</string>
+
+
     <!-- Strings of TabHostFragment -->
     <string name="section_monday">Mo</string>
     <string name="section_tuesday">Tu</string>
