@@ -21,11 +21,11 @@ Hier wird dir kompakt die komplette Woche angezeigt.
 
 ### EINSTELLUNGEN 
 Hier kannst du verschiedene Dinge einstellen die für die App relevant sind.
-<img src="/settings.jpeg" alt="hi" class="inline"/>
+<img src="/settings.jpeg" alt="Einstellungen" class="inline"/>
 
 ### SIDEBAR
 Hier hast du die Möglichkeit zwischen den verschiedenen Wochen zu wählen oder zu den Einstellugen oder der Tagesansicht zu gelangen.
-<img src="/sidebar.jpeg" alt="hi" class="inline"/>
+<img src="/sidebar.jpeg" alt="Sidebar" class="inline"/>
 
 ## Was kommt in der Zukunft?
 
