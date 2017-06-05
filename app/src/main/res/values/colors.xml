@@ -7,4 +7,6 @@
     <color name="colorPrimaryDark">#C4AE51</color>
     <color name="colorAccent">#137F31</color>
     <color name="colorBlank">#FFFFFF</color>
+    <color name="colorRed">#b71c1c</color>
+    <color name="colorLightGrey">#bdbdbd</color>
 </resources>

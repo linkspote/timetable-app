@@ -20,7 +20,8 @@
             android:dialogTitle="@string/dialogTitle_improvePerformance"
             android:key="@string/key_ImprovePerformance"
             android:entries="@array/entries_ImprovePerformance"
-            android:entryValues="@array/values_ImprovePerformance" />
+            android:entryValues="@array/values_ImprovePerformance"
+            android:defaultValue="1" />
 
     </PreferenceCategory>
 
@@ -39,7 +40,8 @@
             android:dialogTitle="@string/dialogTitle_showXPlans"
             android:key="@string/key_showXPlans"
             android:entries="@array/entries_ShowXPlans"
-            android:entryValues="@array/values_ShowXPlans" />
+            android:entryValues="@array/values_ShowXPlans"
+            android:defaultValue="1" />
 
         <CheckBoxPreference
             android:dependency="@string/key_showOldPlans"

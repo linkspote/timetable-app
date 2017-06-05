@@ -178,8 +178,9 @@ public class dataModifier {
                             // switch on base of the index of the row to get left information
                             switch (iRemainingStringIndex) {
                                 case 0:
-                                    // set subject
-                                    sData[2] = eRemainingString.text();
+                                    // when cell value is empty set text to N/A otherwise use text
+                                    sData[2] = (eRemainingString.text().isEmpty()) ?
+                                            "N/A" : eRemainingString.text();
                                     break;
                                 case 1:
                                     // set teacher
@@ -192,6 +193,13 @@ public class dataModifier {
                                 default:
                                     break;
                             }
+                        }
+
+                        // when teacher and room are empty
+                        if (sData[3] == null && sData[4] == null) {
+                            // set room and teacher to N/A => Not Available
+                            sData[3] = "N/A";
+                            sData[4] = "N/A";
                         }
 
                         // if hour value is even, it's the second part of a block

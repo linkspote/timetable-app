@@ -4,7 +4,6 @@
     <string name="action_refresh">Aktualisieren</string>
     <string name="action_switchView">Wechseln</string>
     <string name="category_about">Über</string>
-    <string name="category_timetable">Stundenplan</string>
     <string name="dialogTitle_showXPlans">Bitte wählen</string>
     <string name="navigation_drawer_bugreport">Fehler melden</string>
     <string name="navigation_drawer_settings">Einstellungen</string>
@@ -23,4 +22,14 @@
     <string name="title_showXPlans">Anzahl anzuzeigender Pläne</string>
     <string name="navigation_drawer_close">Seitenleiste schließen</string>
     <string name="navigation_drawer_open">Seitenleiste öffnen</string>
+    <string name="category_dayView">Tagesansicht</string>
+    <string name="category_oldPlans">Alte Pläne</string>
+    <string name="category_weekView">Wochenansicht</string>
+    <string name="dialogMessage_webContentTask">Suche nach Planänderungen</string>
+    <string name="dialogTitle_improvePerformance">Bitte Methode wählen</string>
+    <string name="dialogTitle_webContentTask">Bitte warten…</string>
+    <string name="summary_showActualDay">Wenn die Option aktiviert ist, zeigt die App beim Start immer den aktuellen Tag. Dies funktioniert nur in der aktuellen Woche.</string>
+    <string name="title_improvePerformance">Performance verbessern</string>
+    <string name="title_showActualDay">Aktuellen Tag anzeigen</string>
+    <string name="summary_improvePerformance">Die App wird die ausgewählte Methode nutzen, um die Performance der Wochenansicht zu verbessern. Es gibt auch die Option, dies nicht zu tun.</string>
 </resources>

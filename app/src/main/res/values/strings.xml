@@ -31,7 +31,7 @@
     <string name="category_dayView">Day view</string>
     <string name="title_showActualDay">Show actual day</string>
     <string name="summary_showActualDay">If enabled, the app will display the actual day on startup. This works only for the actual week.</string>
-    <string name="key_showActualDay">pkShowActualDay</string>
+    <string name="key_showActualDay" translatable="false">pkShowActualDay</string>
 
     <string name="category_weekView">Week view</string>
     <string name="title_improvePerformance">Improve performance</string>

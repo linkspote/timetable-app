@@ -2,6 +2,8 @@ package com.it_project.fg15a.timetable_app.helpers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +44,7 @@ public class hourAdapter extends BaseAdapter {
         if (p_vwConvertView == null) {
             LayoutInflater laiInflater = (LayoutInflater)
                     cContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            p_vwConvertView = laiInflater.inflate(R.layout.list_item_hour, null);
+            p_vwConvertView = laiInflater.inflate(R.layout.list_item_hour, p_vwgParent, false);
         }
 
         TextView tvTimeFrom = (TextView) p_vwConvertView.findViewById(R.id.tvTimeFrom);
@@ -56,6 +58,12 @@ public class hourAdapter extends BaseAdapter {
         tvSubject.setText(alsHourItems.get(p_iPosition).getSubject());
         tvTeacher.setText(alsHourItems.get(p_iPosition).getTeacher());
         tvRoom.setText(alsHourItems.get(p_iPosition).getRoom());
+
+        if (alsHourItems.get(p_iPosition).getEntryType().equals("3")) {
+            tvSubject.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
+            tvTeacher.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
+            tvRoom.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
+        }
 
         return p_vwConvertView;
     }

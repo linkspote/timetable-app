@@ -60,7 +60,7 @@ public class DayFragment extends Fragment {
                     sTeacher = meHour.getValue()[3];
                     sRoom = meHour.getValue()[4];
 
-                    alsHours.add(new hourItem(sTimeFrom, sTimeTo, sSubject, sTeacher, sRoom));
+                    alsHours.add(new hourItem(sTimeFrom, sTimeTo, meHour.getValue()));
                 }
             }
         }

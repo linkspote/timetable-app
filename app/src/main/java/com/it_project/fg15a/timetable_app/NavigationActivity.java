@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -15,9 +17,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.it_project.fg15a.timetable_app.helpers.dataModifier;
+import com.it_project.fg15a.timetable_app.helpers.utilities;
 
 import java.util.Calendar;
 import java.util.Map;
@@ -31,23 +35,52 @@ public class NavigationActivity extends AppCompatActivity
     FragmentTransaction ftActivityNavigation;
 
     String sWebsiteContent;
+    String sChosenWeek;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
+        // set default settings
+        PreferenceManager.setDefaultValues(this, R.xml.activity_settings, false);
+
+        // TODO: find good spots for using the preference values
+        // get preferences
+        //SharedPreferences spThis = PreferenceManager.getDefaultSharedPreferences(this);
+        //boolean bPKShowOldPlans = spThis.getBoolean(getString(R.string.key_showOldPlans), false);
+        //String sPKShowXPlans = spThis.getString(getString(R.string.key_showXPlans), "1");
+        //boolean bPKRememberPlan = spThis.getBoolean(getString(R.string.key_rememberPlan), false);
+
         // Find the DrawerLayout and the NavigationView
         drwlActivityNavigation = (DrawerLayout) findViewById(R.id.drwlActivityNavigation);
         nvwActivityNavigation = (NavigationView) findViewById(R.id.nvwActivityNavigation);
+
+        // Initialize new object of utilities class
+        utilities util = new utilities();
+
+        // if user is not connected to the internet
+        if (!util.isOnline(this)) {
+            View vwRoot = findViewById(android.R.id.content);
+            // show message to inform user why timetable doesn't load
+            if (vwRoot != null) {
+                Snackbar.make(vwRoot, "Please establish an internet connection!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }
+
+        sChosenWeek = getWeek(false);
 
         // Inflate FragmentTabHost at first
         fmActivityNavigation = getSupportFragmentManager();
         ftActivityNavigation = fmActivityNavigation.beginTransaction();
         ftActivityNavigation.replace(
                 R.id.flActivityNavigation,
-                TabHostFragment.newInstance(getMapDayData())
+                TabHostFragment.newInstance(getMapDayData(sChosenWeek)),
+                "FRAGMENT_DAY_VIEW"
         ).commit();
+
+        nvwActivityNavigation.setCheckedItem(R.id.nav_item_actual_week);
 
         // Setup click events for Navigation Drawer items
         nvwActivityNavigation.setNavigationItemSelectedListener(this);
@@ -65,10 +98,12 @@ public class NavigationActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         drwlActivityNavigation = (DrawerLayout) findViewById(R.id.drwlActivityNavigation);
-        if (drwlActivityNavigation.isDrawerOpen(GravityCompat.START)) {
-            drwlActivityNavigation.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        if (drwlActivityNavigation != null) {
+            if (drwlActivityNavigation.isDrawerOpen(GravityCompat.START)) {
+                drwlActivityNavigation.closeDrawer(GravityCompat.START);
+            } else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -86,16 +121,55 @@ public class NavigationActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_switchView) {
+        if (id == R.id.action_refresh) {
 
-            Toast.makeText(this, "Switch pressed!", Toast.LENGTH_SHORT).show();
-
-            return true;
-        } else if (id == R.id.action_refresh) {
-
-            Toast.makeText(this, "Refresh pressed!", Toast.LENGTH_SHORT).show();
+            getDayOrWeekViewContent(sChosenWeek);
 
             return true;
+
+        } else if (id == R.id.action_switchView) {
+
+            // Initialize new object of utilities class
+            utilities util = new utilities();
+
+            // if user is not connected to the internet
+            if (!util.isOnline(this)) {
+                View vwRoot = findViewById(android.R.id.content);
+                // show message to inform user why timetable doesn't load
+                if (vwRoot != null) {
+                    Snackbar.make(vwRoot, "Please establish an internet connection!",
+                            Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
+            }
+            // user is connected to the internet
+            else {
+                // begin transaction
+                ftActivityNavigation = fmActivityNavigation.beginTransaction();
+
+                // if current fragment is day view
+                if (fmActivityNavigation.findFragmentByTag("FRAGMENT_DAY_VIEW") != null &&
+                        fmActivityNavigation.findFragmentByTag("FRAGMENT_DAY_VIEW").isVisible()) {
+                    // create new instance of week view fragment
+                    ftActivityNavigation.replace(
+                            R.id.flActivityNavigation,
+                            WeekFragment.newInstance(sChosenWeek),
+                            "FRAGMENT_WEEK_VIEW"
+                    ).commit();
+                }
+                // if current fragment is week view
+                else if (fmActivityNavigation.findFragmentByTag("FRAGMENT_WEEK_VIEW") != null &&
+                        fmActivityNavigation.findFragmentByTag("FRAGMENT_WEEK_VIEW").isVisible()) {
+                    // create new instance of day view fragment
+                    ftActivityNavigation.replace(
+                            R.id.flActivityNavigation,
+                            TabHostFragment.newInstance(getMapDayData(sChosenWeek)),
+                            "FRAGMENT_DAY_VIEW"
+                    ).commit();
+                }
+            }
+
+            return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -106,48 +180,61 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle menu_options view item clicks here.
         int id = item.getItemId();
+        boolean bReturnValue;
 
-        if (id == R.id.nav_item_demo_day) {
+        if (id == R.id.nav_item_actual_week) {
 
-            // Show DayFragment by replacing the actual screen, just for demonstration
-            ftActivityNavigation = fmActivityNavigation.beginTransaction();
-            ftActivityNavigation.replace(R.id.flActivityNavigation, new DayFragment()).commit();
+            sChosenWeek = getWeek(false);
+            getDayOrWeekViewContent(sChosenWeek);
+            bReturnValue = true;
 
-        } else if (id == R.id.nav_item_demo_week) {
+        } else if (id == R.id.nav_item_next_week) {
 
-            // Show WeekFragment by replacing the actual screen, just for demonstration
-            ftActivityNavigation = fmActivityNavigation.beginTransaction();
-            ftActivityNavigation.replace(R.id.flActivityNavigation, new WeekFragment()).commit();
+            sChosenWeek = getWeek(true);
+            getDayOrWeekViewContent(sChosenWeek);
+            bReturnValue = true;
+
+        }else if (id == R.id.nav_item_marks) {
+
+            /*ftActivityNavigation = fmActivityNavigation.beginTransaction();
+            ftActivityNavigation.replace(
+                    R.id.flActivityNavigation,
+                    new MarkFragment(),
+                    "FRAGMENT_MARK"
+            ).commit();*/
+
+            Toast.makeText(this, "Das " + item.getTitle() + "-Feature ist demnächst verfügbar!",
+                    Toast.LENGTH_SHORT).show();
+            bReturnValue = false;
 
         } else if (id == R.id.nav_item_settings) {
 
             // Start SettingsActivity
             startActivity(new Intent(this, SettingsActivity.class));
+            bReturnValue = false;
 
         } else if (id == R.id.nav_bugreport) {
 
             // Use browser window to open issues page on github
             Uri uriBugReport = Uri.parse("https://github.com/webnews2/timetable-app/issues");
             startActivity(new Intent(Intent.ACTION_VIEW, uriBugReport));
+            bReturnValue = false;
 
         } else {
 
             Toast.makeText(this, item.getTitle() + " pressed!", Toast.LENGTH_SHORT).show();
+            bReturnValue = false;
+
         }
 
         drwlActivityNavigation.closeDrawers();
-        return true;
+        return bReturnValue;
     }
 
     // This method returns the map that is necessary for the day view
-    public Map<String, String[]> getMapDayData () {
-        // Get week of year
-        int iThisWeek = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
-
-        // Get actual week of year
-        String sWeek = (iThisWeek < 10 ? "0" : "") + String.valueOf(iThisWeek);
-
-        String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/" + sWeek
+    public Map<String, String[]> getMapDayData (String p_sWeek) {
+        // Uri for plan to load
+        String sUri = "https://bbsovg-magdeburg.de/stundenplan/klassen/" + p_sWeek
                 + "/c/c00042.htm";
 
         try {
@@ -182,6 +269,56 @@ public class NavigationActivity extends AppCompatActivity
         protected void onPostExecute(String p_sResult) {
             super.onPostExecute(p_sResult);
             pdWebContentTask.dismiss();
+        }
+    }
+
+    public String getWeek (boolean p_bNextWeek) {
+        // Get week of year
+        int iThisWeek = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+
+        // return week of year with leading zero
+        return (iThisWeek < 10 ? "0" : "") + String.valueOf((p_bNextWeek) ?
+                iThisWeek + 1 : iThisWeek);
+    }
+
+    public void getDayOrWeekViewContent(String p_sWeek) {
+        // Initialize new object of utilities class
+        utilities util = new utilities();
+
+        // if user is not connected to the internet
+        if (!util.isOnline(this)) {
+            View vwRoot = findViewById(android.R.id.content);
+            // show message to inform user why timetable doesn't load
+            if (vwRoot != null) {
+                Snackbar.make(vwRoot, "Please establish an internet connection!",
+                        Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        }
+        // user is connected to the internet
+        else {
+            // begin transaction
+            ftActivityNavigation = fmActivityNavigation.beginTransaction();
+
+            // if current fragment is day view
+            if (fmActivityNavigation.findFragmentByTag("FRAGMENT_DAY_VIEW") != null &&
+                    fmActivityNavigation.findFragmentByTag("FRAGMENT_DAY_VIEW").isVisible()) {
+                // create new instance of day view fragment
+                ftActivityNavigation.replace(
+                        R.id.flActivityNavigation,
+                        TabHostFragment.newInstance(getMapDayData(p_sWeek)),
+                        "FRAGMENT_DAY_VIEW"
+                ).commit();
+            }
+            // if current fragment is week view
+            else if (fmActivityNavigation.findFragmentByTag("FRAGMENT_WEEK_VIEW") != null &&
+                    fmActivityNavigation.findFragmentByTag("FRAGMENT_WEEK_VIEW").isVisible()) {
+                // create new instance of week view fragment
+                ftActivityNavigation.replace(
+                        R.id.flActivityNavigation,
+                        WeekFragment.newInstance(p_sWeek),
+                        "FRAGMENT_WEEK_VIEW"
+                ).commit();
+            }
         }
     }
 }

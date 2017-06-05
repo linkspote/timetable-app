@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+    <string-array name="entries_ImprovePerformance">
+        <item>Deaktiviert</item>
+        <item>Hardwarebeschleunigung</item>
+        <item>Softwarebeschleunigung</item>
+    </string-array>
+
+    <string-array name="values_ImprovePerformance">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <string-array name="entries_ShowXPlans">
         <item>1 Plan</item>
         <item>2 Pläne</item>
