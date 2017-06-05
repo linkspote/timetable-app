@@ -1,12 +1,12 @@
-## Die Stundenplan App für BBS OVG III
+## Die Stundenplan App für BbS OvG III
 
-## Projekt Name 
+## Wie heißt die App?
 
-Stundenplan - BBS OVG III
+Bbs OvG Timetable
 
 ## Was soll die App bewirken?
 
-Diese App soll den Schulalltag vieler Schüler an den BBS OVG III vereinfachen.
+Diese App soll den Schulalltag vieler Schüler an den BbS OvG III vereinfachen.
 
 ## Was kann die App?
 
