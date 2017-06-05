@@ -1,4 +1,4 @@
-## Die Stundenplan App für BbS OvG III
+# Die Stundenplan App für BbS OvG III
 
 ## Wie heißt die App?
 
