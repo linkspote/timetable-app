@@ -1,9 +1,13 @@
 <resources>
-    <string name="app_name">BbS OvG Timetable</string>
+    <string name="app_name" translatable="false">BbS OvG Timetable</string>
 
     <!-- Strings of menu_navigation_drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_weekX">Calendar week %1$s</string>
+    <string name="navigation_drawer_actualWeek">Actual week (CW %1$s)</string>
+    <string name="navigation_drawer_nextWeek">Next week (CW %1$s)</string>
+    <string name="navigation_drawer_marks">Marks</string>
     <string name="navigation_drawer_settings">Settings</string>
     <string name="navigation_drawer_bugreport">Report a bug</string>
 

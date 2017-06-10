@@ -2,6 +2,7 @@ package com.it_project.fg15a.timetable_app;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,7 +19,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.it_project.fg15a.timetable_app.helpers.dataModifier;
 import com.it_project.fg15a.timetable_app.helpers.utilities;
@@ -35,6 +35,7 @@ public class NavigationActivity extends AppCompatActivity
     FragmentTransaction ftActivityNavigation;
 
     String sWebsiteContent;
+    String sActualWeek = getWeek(false);
     String sChosenWeek;
 
     @Override
@@ -48,8 +49,6 @@ public class NavigationActivity extends AppCompatActivity
         // TODO: find good spots for using the preference values
         // get preferences
         //SharedPreferences spThis = PreferenceManager.getDefaultSharedPreferences(this);
-        //boolean bPKShowOldPlans = spThis.getBoolean(getString(R.string.key_showOldPlans), false);
-        //String sPKShowXPlans = spThis.getString(getString(R.string.key_showXPlans), "1");
         //boolean bPKRememberPlan = spThis.getBoolean(getString(R.string.key_rememberPlan), false);
 
         // Find the DrawerLayout and the NavigationView
@@ -69,7 +68,7 @@ public class NavigationActivity extends AppCompatActivity
             }
         }
 
-        sChosenWeek = getWeek(false);
+        sChosenWeek = sActualWeek;
 
         // Inflate FragmentTabHost at first
         fmActivityNavigation = getSupportFragmentManager();
@@ -80,7 +79,13 @@ public class NavigationActivity extends AppCompatActivity
                 "FRAGMENT_DAY_VIEW"
         ).commit();
 
+        createMenuItemsOldWeeks();
+
         nvwActivityNavigation.setCheckedItem(R.id.nav_item_actual_week);
+        nvwActivityNavigation.getMenu().findItem(R.id.nav_item_actual_week).setTitle(
+                getString(R.string.navigation_drawer_actualWeek, sActualWeek));
+        nvwActivityNavigation.getMenu().findItem(R.id.nav_item_next_week).setTitle(getString(
+                R.string.navigation_drawer_nextWeek, getWeek(true)));
 
         // Setup click events for Navigation Drawer items
         nvwActivityNavigation.setNavigationItemSelectedListener(this);
@@ -194,20 +199,20 @@ public class NavigationActivity extends AppCompatActivity
             getDayOrWeekViewContent(sChosenWeek);
             bReturnValue = true;
 
-        }else if (id == R.id.nav_item_marks) {
+        } /*else if (id == R.id.nav_item_marks) {
 
-            /*ftActivityNavigation = fmActivityNavigation.beginTransaction();
+            ftActivityNavigation = fmActivityNavigation.beginTransaction();
             ftActivityNavigation.replace(
                     R.id.flActivityNavigation,
                     new MarkFragment(),
                     "FRAGMENT_MARK"
-            ).commit();*/
+            ).commit();
 
             Toast.makeText(this, "Das " + item.getTitle() + "-Feature ist demnächst verfügbar!",
                     Toast.LENGTH_SHORT).show();
             bReturnValue = false;
 
-        } else if (id == R.id.nav_item_settings) {
+        }*/ else if (id == R.id.nav_item_settings) {
 
             // Start SettingsActivity
             startActivity(new Intent(this, SettingsActivity.class));
@@ -222,8 +227,9 @@ public class NavigationActivity extends AppCompatActivity
 
         } else {
 
-            Toast.makeText(this, item.getTitle() + " pressed!", Toast.LENGTH_SHORT).show();
-            bReturnValue = false;
+            sChosenWeek = String.valueOf(id);
+            getDayOrWeekViewContent(sChosenWeek);
+            bReturnValue = true;
 
         }
 
@@ -272,6 +278,11 @@ public class NavigationActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * This method returns a string containing the actual/next week of year with leading zero.
+     * @param p_bNextWeek true to get next week of year
+     * @return The string containing the week of year value
+     */
     public String getWeek (boolean p_bNextWeek) {
         // Get week of year
         int iThisWeek = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
@@ -318,6 +329,44 @@ public class NavigationActivity extends AppCompatActivity
                         WeekFragment.newInstance(p_sWeek),
                         "FRAGMENT_WEEK_VIEW"
                 ).commit();
+            }
+        }
+    }
+
+    /**
+     * This method creates the menu items for the old calendar weeks sub menu of the navigation.
+     */
+    public void createMenuItemsOldWeeks() {
+        // get preferences
+        SharedPreferences spThis = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean bPKShowOldPlans = spThis.getBoolean(getString(R.string.key_showOldPlans), false);
+        String sPKShowXPlans = spThis.getString(getString(R.string.key_showXPlans), "1");
+
+        // if old plans are activated
+        if (bPKShowOldPlans) {
+            // get the current navigation drawer menu
+            Menu mOldWeeks = nvwActivityNavigation.getMenu();
+
+            // set the sub menu for the old plans to visible and enabled
+            mOldWeeks.setGroupVisible(R.id.nav_group_timetables_old, true);
+            mOldWeeks.setGroupEnabled(R.id.nav_group_timetables_old, true);
+
+            // iterate as often as old plans have to be shown
+            for (int i = Integer.valueOf(sPKShowXPlans); 1 <= i; i--) {
+                // add a new menu item to the sub menu
+                MenuItem miOldWeek = mOldWeeks.add(
+                        R.id.nav_group_timetables_old,
+                        Integer.valueOf(sActualWeek) - i,
+                        Menu.NONE,
+                        getString(R.string.navigation_drawer_weekX,
+                                String.valueOf(Integer.valueOf(sActualWeek) - i))
+                );
+
+                // set checkable true to make highlighting possible
+                miOldWeek.setCheckable(true);
+
+                // set the icon of the menu item
+                miOldWeek.setIcon(R.drawable.ic_event_note_black_24dp);
             }
         }
     }

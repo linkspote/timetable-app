@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/nav_group_timetables_old" android:checkableBehavior="single" android:visible="false">
-        <item
-            android:id="@+id/nav_item_week_1"
-            android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Kalenderwoche 18"/>
-        <item
-            android:id="@+id/nav_item_week_2"
-            android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Kalenderwoche 19"/>
-        <item
-            android:id="@+id/nav_item_week_3"
-            android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Kalenderwoche 21" />
-        <item
-            android:id="@+id/nav_item_week_4"
-            android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Kalenderwoche 22" />
+    <group android:id="@+id/nav_group_timetables_old" android:checkableBehavior="single"
+        android:visible="false" android:enabled="false" android:orderInCategory="0">
+        <!-- Is getting filled in NavigationActivity -->
     </group>
 
-    <group android:id="@+id/nav_group_timetables_new" android:checkableBehavior="single">
+    <group android:id="@+id/nav_group_timetables_new" android:checkableBehavior="single"
+        android:orderInCategory="1">
         <item
             android:id="@+id/nav_item_actual_week"
             android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Aktuelle Woche (KW 23)" />
+            android:title="" />
         <item
             android:id="@+id/nav_item_next_week"
             android:icon="@drawable/ic_event_note_black_24dp"
-            android:title="Nächste Woche (KW 24)" />
+            android:title="" />
     </group>
 
-    <group android:id="@+id/nav_group_features" android:checkableBehavior="single">
+    <group android:id="@+id/nav_group_features" android:checkableBehavior="single"
+        android:visible="false" android:orderInCategory="2">
         <item
             android:id="@+id/nav_item_marks"
             android:icon="@drawable/ic_format_list_numbered_black_24dp"
-            android:title="Noten" />
+            android:title="@string/navigation_drawer_marks" />
     </group>
 
-    <group android:id="@+id/nav_group_misc" android:checkableBehavior="single">
+    <group android:id="@+id/nav_group_misc" android:checkableBehavior="single"
+        android:orderInCategory="3">
         <item
             android:id="@+id/nav_item_settings"
             android:icon="@drawable/ic_settings_black_24dp"

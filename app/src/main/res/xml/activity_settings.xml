@@ -43,12 +43,12 @@
             android:entryValues="@array/values_ShowXPlans"
             android:defaultValue="1" />
 
-        <CheckBoxPreference
+        <!--<CheckBoxPreference
             android:dependency="@string/key_showOldPlans"
             android:title="@string/title_rememberPlan"
             android:summary="@string/summary_rememberPlan"
             android:key="@string/key_rememberPlan"
-            android:defaultValue="false" />
+            android:defaultValue="false" />-->
 
     </PreferenceCategory>
 

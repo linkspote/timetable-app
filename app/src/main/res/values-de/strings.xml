@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BbS OvG Stundenplan</string>
     <string name="action_refresh">Aktualisieren</string>
     <string name="action_switchView">Wechseln</string>
     <string name="category_about">Über</string>
@@ -32,4 +31,8 @@
     <string name="title_improvePerformance">Performance verbessern</string>
     <string name="title_showActualDay">Aktuellen Tag anzeigen</string>
     <string name="summary_improvePerformance">Die App wird die ausgewählte Methode nutzen, um die Performance der Wochenansicht zu verbessern. Es gibt auch die Option, dies nicht zu tun.</string>
+    <string name="navigation_drawer_actualWeek">Aktuelle Woche (KW %1$s)</string>
+    <string name="navigation_drawer_marks">Noten</string>
+    <string name="navigation_drawer_nextWeek">Nächste Woche (KW %1$s)</string>
+    <string name="navigation_drawer_weekX">Kalenderwoche %1$s</string>
 </resources>

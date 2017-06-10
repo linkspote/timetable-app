@@ -19,7 +19,11 @@ import java.util.Map;
 
 public class dataModifier {
 
-    // This method returns the HTML of the specified URL as string that needs to be parsed
+    /**
+     * This method returns the HTML of the specified URL as string that needs to be parsed.
+     * @param p_sUrl The URL of the website where to get the content from
+     * @return The not parsed HTML content of the website
+     */
     public String getWebContent(String p_sUrl) {
         // declare and initialize necessary variables
         String sWebContent = "", sLine;
@@ -65,7 +69,12 @@ public class dataModifier {
         return sWebContent;
     }
 
-    // This method returns the preprocessed data of a timetable html file
+    /**
+     * USE ONLY for timetables!
+     * This method returns the pre and post processed data of the given not parsed HTML string.
+     * @param p_sWebsiteContent The HTML to be parsed and where to get information from
+     * @return The pre and post processed data for a timetable map
+     */
     public Map<String, String[]> preModifyContent(String p_sWebsiteContent) {
         // map to store all processed data
         // Structure: {Column Index_Row Index, [(0), (1), (2), (3), (4)]}
@@ -239,6 +248,13 @@ public class dataModifier {
     }
 
     // This method returns the final post processed data of a timetable html file
+
+    /**
+     * USE ONLY for timetables!
+     * This method returns the final post processed data of a timetable HTML file.
+     * @param p_mData The map with pre processed data
+     * @return The final processed map with all necessary information to display on day view
+     */
     private Map<String, String[]> postModifyContent (Map<String, String[]> p_mData) {
         // map to store post processed data
         // Structure: {Column Index_Row Index, [(0), (1), (2), (3), (4)]}
