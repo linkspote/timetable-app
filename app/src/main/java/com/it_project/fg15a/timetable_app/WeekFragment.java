@@ -106,7 +106,7 @@ public class WeekFragment extends Fragment {
             wvFragmentWeek.loadUrl(sUri);
         } else {
             // show message to inform user why timetable doesn't load
-            Snackbar.make(p_vwRoot, "Please establish an internet connection!", Snackbar.LENGTH_LONG)
+            Snackbar.make(p_vwRoot, R.string.snackbar_offlineMode, Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
     }

@@ -9,4 +9,5 @@
     <color name="colorBlank">#FFFFFF</color>
     <color name="colorRed">#b71c1c</color>
     <color name="colorLightGrey">#bdbdbd</color>
+    <color name="colorItemText">#424242</color>
 </resources>

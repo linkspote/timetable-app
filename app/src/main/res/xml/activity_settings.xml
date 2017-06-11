@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <PreferenceCategory android:title="@string/category_dayView">
+    <!--<PreferenceCategory android:title="@string/category_dayView">
 
         <SwitchPreference
             android:title="@string/title_showActualDay"
@@ -10,7 +10,7 @@
             android:key="@string/key_showActualDay"
             android:defaultValue="false" />
 
-    </PreferenceCategory>
+    </PreferenceCategory>-->
 
     <PreferenceCategory android:title="@string/category_weekView">
 

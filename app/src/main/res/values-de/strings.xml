@@ -14,7 +14,7 @@
     <string name="section_wednesday">Mi</string>
     <string name="summary_rememberPlan">Ist das Häkchen gesetzt, so zeigt die App immer den zuletzt angesehenen Plan. Ist das Häkchen nicht gesetzt, so zeigt die App immer den aktuellen Wochenplan.</string>
     <string name="summary_showOldPlans">Wenn die Option aktiviert ist, zeigt die App so viele Pläne wie unten ausgewählt an.</string>
-    <string name="summary_showXPlans">Die App zeigt genauso viele Pläne wie ausgewählt an.</string>
+    <string name="summary_showXPlans">Die App zeigt genauso viele Pläne wie ausgewählt an. Aktuell: %1$s</string>
     <string name="title_developers">Entwickler</string>
     <string name="title_rememberPlan">Ausgewählten Plan merken</string>
     <string name="title_showOldPlans">Alte Pläne anzeigen</string>
@@ -30,9 +30,11 @@
     <string name="summary_showActualDay">Wenn die Option aktiviert ist, zeigt die App beim Start immer den aktuellen Tag. Dies funktioniert nur in der aktuellen Woche.</string>
     <string name="title_improvePerformance">Performance verbessern</string>
     <string name="title_showActualDay">Aktuellen Tag anzeigen</string>
-    <string name="summary_improvePerformance">Die App wird die ausgewählte Methode nutzen, um die Performance der Wochenansicht zu verbessern. Es gibt auch die Option, dies nicht zu tun.</string>
+    <string name="summary_improvePerformance">Die App wird die ausgewählte Methode nutzen, um die Performance der Wochenansicht zu verbessern. Aktuell: %1$s</string>
     <string name="navigation_drawer_actualWeek">Aktuelle Woche (KW %1$s)</string>
     <string name="navigation_drawer_marks">Noten</string>
     <string name="navigation_drawer_nextWeek">Nächste Woche (KW %1$s)</string>
     <string name="navigation_drawer_weekX">Kalenderwoche %1$s</string>
+    <string name="snackbar_offlineMode">Offline-Modus: Bitte stelle eine Interverbindung her!</string>
+    <string name="snackbar_useBackButton">Bitte nutze den Zurück-Button um zur vorherigen Ansicht zurückzukehren.</string>
 </resources>

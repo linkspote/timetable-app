@@ -61,8 +61,12 @@ public class hourAdapter extends BaseAdapter {
 
         if (alsHourItems.get(p_iPosition).getEntryType().equals("3")) {
             tvSubject.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
-            tvTeacher.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
             tvRoom.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
+            tvTeacher.setTextColor(ContextCompat.getColor(cContext, R.color.colorRed));
+        } else {
+            tvSubject.setTextColor(ContextCompat.getColor(cContext, android.R.color.tertiary_text_light));
+            tvRoom.setTextColor(ContextCompat.getColor(cContext, android.R.color.tertiary_text_light));
+            tvTeacher.setTextColor(ContextCompat.getColor(cContext, android.R.color.tertiary_text_light));
         }
 
         return p_vwConvertView;

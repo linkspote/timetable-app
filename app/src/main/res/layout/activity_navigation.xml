@@ -42,7 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:menu="@menu/menu_navigation_drawer" />
+            app:menu="@menu/menu_navigation_drawer"
+            app:itemTextColor="@color/nav_drawer_item"
+            app:itemIconTint="@color/nav_drawer_item" />
 
     </android.support.v4.widget.DrawerLayout>
 

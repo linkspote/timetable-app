@@ -20,6 +20,11 @@
     <!-- Strings of NavigationActivity -->
     <string name="dialogTitle_webContentTask">Please wait…</string>
     <string name="dialogMessage_webContentTask">Checking for plan updates</string>
+    <string name="snackbar_offlineMode">Offline mode: Please establish an internet connection!</string>
+
+
+    <!-- Strings of SettingsActivity -->
+    <string name="snackbar_useBackButton">Please use the back button to return to the previous view.</string>
 
 
     <!-- Strings of TabHostFragment -->
@@ -39,7 +44,7 @@
 
     <string name="category_weekView">Week view</string>
     <string name="title_improvePerformance">Improve performance</string>
-    <string name="summary_improvePerformance">The app will use the chosen method to improve the performance of the week view. There is also the option to not improve the performance.</string>
+    <string name="summary_improvePerformance">The app will use the chosen method to improve the performance of the week view. Currently: %1$s</string>
     <string name="dialogTitle_improvePerformance">Please choose a method</string>
     <string name="key_ImprovePerformance" translatable="false">pkImprovePerformance</string>
 
@@ -49,7 +54,7 @@
     <string name="key_showOldPlans" translatable="false">pkShowOldPlans</string>
     <string name="title_showXPlans">Amount of plans to show</string>
     <string name="dialogTitle_showXPlans">Please choose</string>
-    <string name="summary_showXPlans">The app will display as many plans as chosen.</string>
+    <string name="summary_showXPlans">The app will display as many plans as chosen. Currently: %1$s</string>
     <string name="key_showXPlans" translatable="false">pkShowXPlans</string>
     <string name="title_rememberPlan">Remember selected plan</string>
     <string name="summary_rememberPlan">If checked, the app will show you the last viewed plan on start and resume. If not checked, the app will always show current weeks plan.</string>
