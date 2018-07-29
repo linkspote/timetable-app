@@ -62,7 +62,7 @@
 
     <string name="category_about">About</string>
     <string name="title_developers">Developers</string>
-    <string name="summary_developers" translatable="false">Jonas Budde, Kevin Kleiber &amp; Niclas Ressel</string>
+    <string name="summary_developers" translatable="false">Kevin Kleiber</string>
     <string name="title_version" translatable="false">Version</string>
 
     <!-- TODO: Remove or change this placeholder text -->

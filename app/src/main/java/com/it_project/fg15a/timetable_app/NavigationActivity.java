@@ -221,9 +221,16 @@ public class NavigationActivity extends AppCompatActivity
 
         }*/ else if (id == R.id.nav_item_settings) {
 
+            ftActivityNavigation = fmActivityNavigation.beginTransaction();
+            ftActivityNavigation.replace(
+                    R.id.flActivityNavigation,
+                    new SettingsFragment(),
+                    "FRAGMENT_SETTINGS"
+            ).commit();
+
             // Start SettingsActivity
-            startActivity(new Intent(this, SettingsActivity.class));
-            bReturnValue = false;
+            //startActivity(new Intent(this, SettingsActivity.class));
+            bReturnValue = true;
 
         } else if (id == R.id.nav_bugreport) {
 

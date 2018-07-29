@@ -1,0 +1,67 @@
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/category_dayView">
+
+        <android.support.v7.preference.SwitchPreference
+            android:title="@string/title_showActualDay"
+            android:summary="@string/summary_showActualDay"
+            android:key="@string/key_showActualDay"
+            android:defaultValue="false" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/category_weekView">
+
+        <android.support.v7.preference.ListPreference
+            android:title="@string/title_improvePerformance"
+            android:summary="@string/summary_improvePerformance"
+            android:dialogTitle="@string/dialogTitle_improvePerformance"
+            android:key="@string/key_ImprovePerformance"
+            android:entries="@array/entries_ImprovePerformance"
+            android:entryValues="@array/values_ImprovePerformance"
+            android:defaultValue="1" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/category_oldPlans">
+
+        <android.support.v7.preference.SwitchPreferenceCompat
+            android:title="@string/title_showOldPlans"
+            android:summary="@string/summary_showOldPlans"
+            android:key="@string/key_showOldPlans"
+            android:defaultValue="false" />
+
+        <android.support.v7.preference.ListPreference
+            android:dependency="@string/key_showOldPlans"
+            android:title="@string/title_showXPlans"
+            android:summary="@string/summary_showXPlans"
+            android:dialogTitle="@string/dialogTitle_showXPlans"
+            android:key="@string/key_showXPlans"
+            android:entries="@array/entries_ShowXPlans"
+            android:entryValues="@array/values_ShowXPlans"
+            android:defaultValue="1" />
+
+        <android.support.v7.preference.CheckBoxPreference
+            android:dependency="@string/key_showOldPlans"
+            android:title="@string/title_rememberPlan"
+            android:summary="@string/summary_rememberPlan"
+            android:key="@string/key_rememberPlan"
+            android:defaultValue="false" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+    <android.support.v7.preference.PreferenceCategory android:title="@string/category_about">
+
+        <android.support.v7.preference.Preference
+            android:title="@string/title_developers"
+            android:summary="@string/summary_developers" />
+
+        <android.support.v7.preference.Preference
+            android:title="@string/title_version"
+            android:summary="@string/versionName" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
+</android.support.v7.preference.PreferenceScreen>
