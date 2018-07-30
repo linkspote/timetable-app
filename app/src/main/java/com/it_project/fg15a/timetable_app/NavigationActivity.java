@@ -228,8 +228,6 @@ public class NavigationActivity extends AppCompatActivity
                     "FRAGMENT_SETTINGS"
             ).commit();
 
-            // Start SettingsActivity
-            //startActivity(new Intent(this, SettingsActivity.class));
             bReturnValue = true;
 
         } else if (id == R.id.nav_bugreport) {

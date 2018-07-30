@@ -1,4 +1,4 @@
-package com.it_project.fg15a.timetable_app;
+package com.it_project.fg15a.timetable_app._obsolet;
 
 
 import android.content.SharedPreferences;
@@ -9,6 +9,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.preference.Preference;
+
+import com.it_project.fg15a.timetable_app.R;
 
 import java.util.prefs.PreferenceChangeListener;
 

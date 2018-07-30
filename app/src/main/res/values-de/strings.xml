@@ -37,4 +37,8 @@
     <string name="navigation_drawer_weekX">Kalenderwoche %1$s</string>
     <string name="snackbar_offlineMode">Offline-Modus: Bitte stelle eine Interverbindung her!</string>
     <string name="snackbar_useBackButton">Bitte nutze den Zurück-Button um zur vorherigen Ansicht zurückzukehren.</string>
+    <string name="category_actualClass">Klassenauswahl</string>
+    <string name="title_actualClass">Aktuelle Klasse</string>
+    <string name="summary_actualClass">Die App wird nur Pläne für die ausgewählte Klasse anzeigen. Aktuell: %1$s</string>
+    <string name="dialogTitle_actualClass">Bitte Klasse wählen</string>
 </resources>

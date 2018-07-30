@@ -37,6 +37,12 @@
 
 
     <!-- Strings of activity_settings -->
+    <string name="category_actualClass">Class selection</string>
+    <string name="title_actualClass">Current class</string>
+    <string name="summary_actualClass">The app will only show plans for the selected class. Currently: %1$s</string>
+    <string name="dialogTitle_actualClass">Please choose a class</string>
+    <string name="key_actualClass" translatable="false">pkActualClass</string>
+
     <string name="category_dayView">Day view</string>
     <string name="title_showActualDay">Show actual day</string>
     <string name="summary_showActualDay">If enabled, the app will display the actual day on startup. This works only for the actual week.</string>

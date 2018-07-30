@@ -14,22 +14,11 @@ import android.view.ViewGroup;
  */
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-
-/*    public SettingsFragment() {
-        // Required empty public constructor
-    }*/
-
     @Override
-    public void onCreatePreferences(Bundle bundle, String s) {
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         // Load the Preferences from the XML file
-        addPreferencesFromResource(R.xml.fragment_settings);
+        //addPreferencesFromResource(R.xml.fragment_settings);
+        setPreferencesFromResource(R.xml.fragment_settings, rootKey);
     }
-
-/*    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
-    }*/
 
 }

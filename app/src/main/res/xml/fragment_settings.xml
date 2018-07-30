@@ -2,9 +2,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.preference.PreferenceCategory android:title="@string/category_actualClass">
+
+        <android.support.v7.preference.ListPreference
+            android:title="@string/title_actualClass"
+            android:summary="@string/summary_actualClass"
+            android:dialogTitle="@string/dialogTitle_actualClass"
+            android:key="@string/key_actualClass" />
+
+    </android.support.v7.preference.PreferenceCategory>
+
     <android.support.v7.preference.PreferenceCategory android:title="@string/category_dayView">
 
-        <android.support.v7.preference.SwitchPreference
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:title="@string/title_showActualDay"
             android:summary="@string/summary_showActualDay"
             android:key="@string/key_showActualDay"
